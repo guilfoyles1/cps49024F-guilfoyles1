@@ -1,0 +1,8 @@
+# Ignore any secrets file(s)
+**/secrets.txt
+
+# Ignore backup files
+**/*.bak
+
+# Ignore vscode
+**/.vscode
