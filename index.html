@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Messenger PoC</title>
+    </head>
+    <body>
+        <h1>Messenger Proof of Concept</h1>
+        <p>Developed by Shayna Guilfoyle in CPS 490 Fall 2024</p>
+        <!--the main UI starts-->
+        <div id="loginUI">
+            Please login first: <br>
+            <input type="text" id="username" placeholder="Enter your name">
+            <button type="button" onclick="displayname()">Join</button>
+        </div>
+        <div id="chatUI">
+            <div id="messages"></div>
+        </div>
+        <script>
+            function displayname(){
+                document.getElementById('messages').innerHTML='Welcome '+document.getElementById('username').value;
+            }
+        </script>
+    </body>
+</html>
