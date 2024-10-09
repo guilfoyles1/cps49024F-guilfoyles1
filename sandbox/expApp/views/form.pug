@@ -1,0 +1,14 @@
+html 
+    head
+        title Form Example
+    body 
+        form(action = "/", method = "POST")
+            div 
+                label(for = "say") Say: 
+                input(name = "say" value = "Message")
+            br
+            div 
+                label(for = "to") To: 
+                input(name = "to" value = "Recipient")
+            br
+            button(type = "submit") Send
