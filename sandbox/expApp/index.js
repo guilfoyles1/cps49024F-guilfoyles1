@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 const upload = multer();
 const app  = express();
-const port = 3002;
+const port = 3003;
 
 // Set Pug as the templating engine
 app.set('view engine', 'pug');
