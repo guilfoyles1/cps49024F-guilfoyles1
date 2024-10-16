@@ -1,0 +1,18 @@
+html 
+head
+    title Pet 
+    body 
+        form(action = "/pet", method = "POST")
+            div 
+                label(for = "name") Name: 
+                input(name = "name")
+            br
+            div 
+                label(for = "age") Age: 
+                input(name = "age")
+            br
+            div 
+                label(for = "species") Species: 
+                input(name = "species")
+            br 
+            button(type = "submit") Create new pet

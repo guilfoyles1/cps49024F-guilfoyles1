@@ -1,0 +1,11 @@
+html
+    head
+        title Pet
+    body
+        if (type == "error")
+            h3(style="color:red") #{message}
+        else
+            h3 New pet added:
+            p Name: #{pet.name}
+            p Age: #{pet.age}
+            p Species: #{pet.species}
