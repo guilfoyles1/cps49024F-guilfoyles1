@@ -1,5 +1,5 @@
 const express = require('express');
-const Pet = require('../models/pet'); // Adjusted path for Pet model
+const Pet = require('../models/pet'); 
 const router = express.Router();
 
 // GET route to render the pet form
