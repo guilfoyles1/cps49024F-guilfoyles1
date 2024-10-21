@@ -30,11 +30,13 @@ router.post('/signup', async (req, res) => {
 
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
-    
+
     // Create a new user
     const newUser = new User({ username, password: hashedPassword });
     await newUser.save();
-    res.status(201).send('User created successfully');
+
+    // Redirect to login page after successful signup
+    res.status(201).redirect('/login');
   } catch (error) {
     res.status(500).send('Error creating user: ' + error.message);
   }
@@ -62,9 +64,12 @@ router.post('/login', async (req, res) => {
       return res.status(401).send('Invalid credentials');
     }
 
-    // Store user ID in session
+    // Store user ID in session and set a new expiration
     req.session.userId = user._id;
-    res.send('Login successful');
+    req.session.cookie.expires = new Date(Date.now() + 60 * 60 * 1000); // Set expiration to 1 hour
+
+    // Redirect to a protected route after successful login
+    res.redirect('/protected');
   } catch (error) {
     res.status(500).send('Error logging in: ' + error.message);
   }
@@ -76,6 +81,7 @@ router.get('/logout', (req, res) => {
     if (err) {
       return res.status(500).send('Error logging out');
     }
+    res.clearCookie('connect.sid', { path: '/' }); // Clear the session cookie
     res.send('Logout successful');
   });
 });
