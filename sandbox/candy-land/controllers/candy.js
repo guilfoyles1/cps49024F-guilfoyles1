@@ -102,22 +102,38 @@ const deleteCandy = async (req, res) => {
     }
 };
 
-// Administrative functions (not typically included in controllers)
+// Function to drop all candies from the database
 const dropCandy = async () => {
-    await Candy.deleteMany({});
+    return await Candy.deleteMany({});
 };
 
+// Function to seed candy data
 const seedCandy = async () => {
-    const candyData = [
-        { company: "Hershey", brand: "Reece's Pieces", quantity: 5 },
-        { company: "Hershey", brand: "5th Avenue", quantity: 10 },
-        { company: "Hershey", brand: "York Peppermint Patties", quantity: 11 },
-        { company: "Mars", brand: "Snickers", quantity: 2 },
-        { company: "Mars", brand: "Twix", quantity: 7 },
-    ];
+    // Check if candies already exist
+    const existingCandies = await Candy.find({});
+    if (existingCandies.length === 0) {
+        const candyData = [
+            { company: "Hershey", brand: "Reece's Pieces", quantity: 5 },
+            { company: "Hershey", brand: "5th Avenue", quantity: 10 },
+            { company: "Hershey", brand: "York Peppermint Patties", quantity: 11 },
+            { company: "Mars", brand: "Snickers", quantity: 2 },
+            { company: "Mars", brand: "Twix", quantity: 7 },
+        ];
 
-    await Candy.insertMany(candyData);
+        // Save each candy to the database
+        const candyPromises = candyData.map(data => new Candy(data).save());
+        await Promise.all(candyPromises);
+
+        console.log('Seed data added successfully');
+    } else {
+        console.log('Seed data already exists, skipping seeding');
+    }
 };
+
+// Drop candies and seed data on server start
+dropCandy().then(() => {
+    seedCandy();
+});
 
 // Exporting the API functions
 module.exports = {
@@ -126,6 +142,6 @@ module.exports = {
     createCandy,
     updateCandy,
     deleteCandy,
-    dropCandy, 
-    seedCandy, 
+    dropCandy,
+    seedCandy,
 };
