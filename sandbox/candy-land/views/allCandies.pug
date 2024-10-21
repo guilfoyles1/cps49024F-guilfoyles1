@@ -1,0 +1,11 @@
+html
+    head
+        title All Candies
+    body
+        if (type == "error")
+            h3(style="color:red") #{message}
+        else
+            h2(style="color:pink") Below are all candies in the DB:
+            each candy in candies
+                p
+                    | Company: #{candy.company}, Brand: #{candy.brand}, Quantity: #{candy.quantity}

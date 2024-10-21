@@ -4,8 +4,8 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 const upload = multer();
 
-const db = require('./config/db'); // Ensure you connect to your database here
-const router = require('./routes'); // Import the router
+const db = require('./config/db'); // Connect to your database here
+const candyRouter = require('./routes/candy'); // Correctly import the candy router
 const { seedCandy } = require('./controllers/candy'); // Import the seedCandy function
 
 // Set the view engine and views location
@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(upload.array());
 
 // Use the candy router for the '/candy' route
-app.use('/candy', router.candyRouter);
+app.use('/candy', candyRouter); // Correctly apply the candy router here
 
 // Seed the database with initial data
 seedCandy().then(() => {

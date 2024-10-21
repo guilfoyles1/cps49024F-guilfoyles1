@@ -10,9 +10,11 @@ const candyExists = async (companyname, brandname) => {
 const getAllCandy = async (req, res) => {
     try {
         const candies = await Candy.find({});
-        res.status(200).json({ success: true, candies });
+        // Render the 'allCandies' view and pass the candies data to the template
+        res.render('allCandies', { candies, type: 'success' });
     } catch (error) {
-        res.status(500).json({ success: false, message: "Internal server error" });
+        // If there's an error, render the view with an error message
+        res.render('allCandies', { type: 'error', message: "Internal server error" });
     }
 };
 
@@ -109,7 +111,6 @@ const dropCandy = async () => {
 
 // Function to seed candy data
 const seedCandy = async () => {
-    // Check if candies already exist
     const existingCandies = await Candy.find({});
     if (existingCandies.length === 0) {
         const candyData = [
@@ -120,10 +121,8 @@ const seedCandy = async () => {
             { company: "Mars", brand: "Twix", quantity: 7 },
         ];
 
-        // Save each candy to the database
         const candyPromises = candyData.map(data => new Candy(data).save());
         await Promise.all(candyPromises);
-
         console.log('Seed data added successfully');
     } else {
         console.log('Seed data already exists, skipping seeding');
@@ -135,7 +134,6 @@ dropCandy().then(() => {
     seedCandy();
 });
 
-// Exporting the API functions
 module.exports = {
     getAllCandy,
     getCandy,
