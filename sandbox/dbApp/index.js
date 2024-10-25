@@ -1,16 +1,17 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const multer = require('multer');
 const mongoose = require('mongoose');
 const petRoutes = require('./routes/petRoutes'); // Import pet routes
 
-const upload = multer();
 const app = express();
 
 // Middleware to parse incoming requests
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(upload.array());
+
+// Set Pug as the view engine
+app.set('view engine', 'pug');
+app.set('views', './views');
 
 // MongoDB connection credentials
 const username = 'guilfoyles1'; // Username
@@ -27,8 +28,8 @@ mongoose.connect(`mongodb+srv://${username}:${password}@${cluster}/${db}?retryWr
     console.error('Error connecting to MongoDB:', err);
   });
 
-// Use the pet routes
-app.use('/pets', petRoutes); // Pet-related routes
+// Use petRoutes with no prefix, so /pet and /all work directly
+app.use('/', petRoutes);
 
 // Start the server
 const PORT = 3001;
