@@ -10,11 +10,11 @@ const candyExists = async (companyname, brandname) => {
 const getAllCandy = async (req, res) => {
     try {
         const candies = await Candy.find({});
-        // Render the 'allCandies' view and pass the candies data to the template
-        res.render('allCandies', { candies, type: 'success' });
+        // Render the 'show_all' view and pass the candies data to the template
+        res.render('show_all', { candies, type: 'success' });
     } catch (error) {
         // If there's an error, render the view with an error message
-        res.render('allCandies', { type: 'error', message: "Internal server error" });
+        res.render('show_all', { type: 'error', message: "Internal server error" });
     }
 };
 
