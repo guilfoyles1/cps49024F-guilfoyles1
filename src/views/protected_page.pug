@@ -1,0 +1,18 @@
+doctype html
+html
+    head
+        title Protected Page
+        link(rel="stylesheet", href="/styles.css")
+
+    body
+        .container        
+            header
+                h1 Welcome, #{name}!
+                p How are you doing today?
+
+            main
+                section
+                    h2 Account Options
+                    button(type="button" onClick = "window.location.href = '/update_user';") Update User Info
+                    p Want to log out?
+                    button(type="button" onClick = "window.location.href = '/logout';") Logout

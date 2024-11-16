@@ -1,0 +1,38 @@
+{
+  "name": "deployment-test",
+  "version": "1.0.0",
+  "description": "A Node.js application for CPS 490 to test cloud deployment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/guilfoyles1/cps49024F-guilfoyles1.git"
+  },
+  "keywords": [
+    "Node.js",
+    "Express",
+    "Capstone"
+  ],
+  "author": "Shayna Guilfoyle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guilfoyles1/cps49024F-guilfoyles1/issues"
+  },
+  "homepage": "https://github.com/guilfoyles1/cps49024F-guilfoyles1#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+   "body-parser": "^1.20.3",
+   "cookie-parser": "^1.4.7",
+   "express": "^4.21.1",
+   "express-session": "^1.18.1",
+   "http": "^0.0.1-security",
+    "mongoose": "^7.0.0",
+   "multer": "^1.4.5-lts.1",
+   "pug": "^3.0.2",
+   "socket.io": "^4.6.1"
+}
+
+}
