@@ -1,13 +1,15 @@
-# guilfoyles1
-Shayna I. Guilfoyle's CPS 490 Individual Repository
+# Shayna I. Guilfoyle's CPS 490 Repository
 
-# cps49024F-guilfoyles1
-cps 490 fall repo
+This repository contains my individual projects and assignments for **CPS 490 - Fall 2024**.  
 
-# Heading H1
+## Contents
+- Individual assignments
+- Projects using MongoDB, Express.js, React.js, Node.js, and more
 
-* Unordered list item 1
+## About
+CPS 490 is a capstone course focused on full-stack development and software engineering.
 
-This is [a link example](https://tinyurl.com/4b5awnbb)
+## Heroku Deployment
+The application has been successfully deployed to Heroku. You can access it at the following URL:
+[https://guilfoyles1-test-73d78f072467.herokuapp.com/](https://guilfoyles1-test-73d78f072467.herokuapp.com/)
 
-![Description](/figures/sequence_diagrams.png "Optional Title Attribute")
